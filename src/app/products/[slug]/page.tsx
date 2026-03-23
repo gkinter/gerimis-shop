@@ -48,14 +48,14 @@ export default async function ProductPage({
 
       {/* Product hero */}
       <div className="container-page pb-16">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-10">
-          {/* Gallery — 7 cols */}
-          <div className="lg:col-span-7">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-12">
+          {/* Gallery */}
+          <div>
             <ProductGallery images={product.images} name={product.name} />
           </div>
 
-          {/* Product info — 5 cols */}
-          <div className="lg:col-span-5 lg:sticky lg:top-28 lg:self-start">
+          {/* Product info */}
+          <div className="lg:sticky lg:top-28 lg:self-start lg:max-w-lg">
             <p className="text-[10px] uppercase tracking-[0.12em] text-[var(--color-accent)] mb-1.5">
               {product.category}
             </p>
@@ -144,9 +144,9 @@ export default async function ProductPage({
                   className="border-b border-black/5 py-3.5 group"
                   open={section.defaultOpen}
                 >
-                  <summary className="flex justify-between items-center cursor-pointer text-[11px] uppercase tracking-[0.08em] text-gray-700 font-medium">
+                  <summary className="flex justify-between items-center cursor-pointer text-[13px] text-gray-700">
                     {section.title}
-                    <span className="text-xs text-gray-400 group-open:rotate-45 transition-transform">+</span>
+                    <span className="text-[13px] text-gray-400 group-open:rotate-45 transition-transform flex-shrink-0 ml-4">+</span>
                   </summary>
                   {section.content}
                 </details>

@@ -190,7 +190,7 @@ export default function HomePage() {
       </section>
 
       {/* Community */}
-      <section className="text-center pb-20 md:pb-28">
+      <section className="text-center py-16 md:py-24 mb-8">
         <p className="label-editorial text-[var(--color-accent)] mb-2">@gerimis.bali</p>
         <h2 className="font-[family-name:var(--font-display)] text-xl md:text-2xl font-light mb-3">
           Join the Drizzle Crew
