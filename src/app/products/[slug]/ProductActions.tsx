@@ -26,29 +26,22 @@ export function ProductActions({ product }: ProductActionsProps) {
   };
 
   return (
-    <div className="space-y-6">
-      {/* Size selector */}
+    <div className="space-y-4">
+      {/* Size */}
       <div>
-        <div className="flex items-center justify-between mb-3">
-          <p className="label-editorial text-gray-500">
-            Size
-          </p>
-          <button className="text-xs text-[var(--color-accent)] underline hover:opacity-70 transition-opacity focus-ring">
-            Size Guide
-          </button>
+        <div className="flex items-center justify-between mb-2">
+          <span className="text-[11px] uppercase tracking-[0.08em] text-gray-600 font-medium">Size</span>
+          <button className="text-[11px] text-[var(--color-accent)] underline">Size Guide</button>
         </div>
-        <div className="flex flex-wrap gap-2">
+        <div className="flex gap-1.5">
           {product.sizes.map((size) => (
             <button
               key={size}
-              onClick={() => {
-                setSelectedSize(size);
-                setShowSizeError(false);
-              }}
-              className={`min-w-[48px] h-12 px-3 border text-sm transition-all duration-200 rounded-sm focus-ring ${
+              onClick={() => { setSelectedSize(size); setShowSizeError(false); }}
+              className={`min-w-[40px] h-10 px-2.5 text-[12px] border transition-all rounded-sm ${
                 selectedSize === size
-                  ? "border-black bg-transparent text-black font-semibold"
-                  : "border-black/10 text-gray-600 hover:border-black/30"
+                  ? "border-black text-black font-medium"
+                  : "border-black/10 text-gray-500 hover:border-black/25"
               }`}
             >
               {size}
@@ -56,25 +49,23 @@ export function ProductActions({ product }: ProductActionsProps) {
           ))}
         </div>
         {showSizeError && (
-          <p className="text-xs text-[var(--color-coral)] mt-2 animate-fade-in-up" style={{ animationDuration: "0.3s" }}>
-            Please select a size
-          </p>
+          <p className="text-[11px] text-[var(--color-coral)] mt-1.5">Please select a size</p>
         )}
       </div>
 
-      {/* Add to cart */}
+      {/* Add to bag */}
       <button
         onClick={handleAddToCart}
         disabled={product.soldOut}
-        className={`w-full py-5 text-sm uppercase tracking-[0.2em] font-medium transition-all duration-200 btn-tactile focus-ring rounded-sm ${
+        className={`w-full py-3.5 text-[11px] uppercase tracking-[0.12em] font-medium transition-colors rounded-sm ${
           added
             ? "bg-[var(--color-jungle)] text-white"
             : product.soldOut
             ? "bg-gray-200 text-gray-400 cursor-not-allowed"
-            : "bg-black text-white hover:bg-gray-900"
+            : "bg-black text-white hover:bg-gray-800"
         }`}
       >
-        {product.soldOut ? "Sold Out" : added ? "Added to Bag!" : "Add to Bag"}
+        {product.soldOut ? "Sold Out" : added ? "Added!" : "Add to Bag"}
       </button>
     </div>
   );

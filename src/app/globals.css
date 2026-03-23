@@ -74,11 +74,11 @@ html {
   scrollbar-width: none;
 }
 
-/* Editorial label — small all-caps with wide tracking */
+/* Editorial label — small all-caps */
 .label-editorial {
-  font-size: 10px;
+  font-size: 11px;
   text-transform: uppercase;
-  letter-spacing: 0.4em;
+  letter-spacing: 0.12em;
   font-weight: 500;
 }
 
