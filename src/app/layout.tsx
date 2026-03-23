@@ -19,13 +19,13 @@ const playfair = Playfair_Display({
 });
 
 export const metadata: Metadata = {
-  title: "Gerimis — Colorful Raincoats from Bali",
+  title: "Gerimis — Colorful Rain Ponchos from Bali",
   description:
-    "Gerimis: artfully designed raincoats that celebrate the beauty of rain. Born in Bali, made for the world. Embrace the drizzle in style.",
+    "Gerimis: artfully designed rain ponchos that celebrate the beauty of rain. Born in Bali, made for the world. Embrace the drizzle in style.",
   openGraph: {
-    title: "Gerimis — Colorful Raincoats from Bali",
+    title: "Gerimis — Colorful Rain Ponchos from Bali",
     description:
-      "Artfully designed raincoats that celebrate the beauty of rain. Born in Bali, made for the world.",
+      "Artfully designed rain ponchos that celebrate the beauty of rain. Born in Bali, made for the world.",
     type: "website",
   },
 };
@@ -40,7 +40,7 @@ export default function RootLayout({
       <body className="font-sans antialiased">
         <CartProvider>
           <Header />
-          <main>{children}</main>
+          <main className="min-h-[50vh]">{children}</main>
           <Footer />
           <Newsletter />
         </CartProvider>

@@ -3,7 +3,7 @@ import Link from "next/link";
 export function Footer() {
   return (
     <footer className="bg-[var(--color-volcanic)] text-white">
-      <div className="max-w-7xl mx-auto px-4 md:px-8 py-16">
+      <div className="max-w-7xl mx-auto px-4 md:px-8 py-16 md:py-20">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-12 md:gap-8">
           {/* Brand */}
           <div className="md:col-span-2">
@@ -11,13 +11,21 @@ export function Footer() {
               Gerimis
             </span>
             <p className="mt-4 text-sm text-white/70 max-w-sm leading-relaxed">
-              Artfully designed raincoats born in Bali. We believe rain is
+              Artfully designed rain ponchos born in Bali. We believe rain is
               beautiful, and so should you be in it. Made from recycled materials
               because the ocean is our neighbor.
             </p>
-            <p className="mt-6 text-xs text-white/40">
-              &copy; {new Date().getFullYear()} Gerimis. All rights reserved.
-            </p>
+            <div className="flex gap-4 mt-6">
+              {["Instagram", "TikTok", "Pinterest"].map((social) => (
+                <a
+                  key={social}
+                  href="#"
+                  className="text-xs text-white/50 hover:text-white transition-colors focus-ring"
+                >
+                  {social}
+                </a>
+              ))}
+            </div>
           </div>
 
           {/* Shop */}
@@ -26,26 +34,21 @@ export function Footer() {
               Shop
             </h4>
             <ul className="space-y-3">
-              <li>
-                <Link href="/collections/all" className="text-sm text-white/70 hover:text-white transition-colors">
-                  All Raincoats
-                </Link>
-              </li>
-              <li>
-                <Link href="/collections/new" className="text-sm text-white/70 hover:text-white transition-colors">
-                  New Arrivals
-                </Link>
-              </li>
-              <li>
-                <Link href="/collections/print" className="text-sm text-white/70 hover:text-white transition-colors">
-                  Bold Prints
-                </Link>
-              </li>
-              <li>
-                <Link href="/collections/essential" className="text-sm text-white/70 hover:text-white transition-colors">
-                  Essentials
-                </Link>
-              </li>
+              {[
+                { href: "/collections/all", label: "All Rain Ponchos" },
+                { href: "/collections/new", label: "New Arrivals" },
+                { href: "/collections/print", label: "Bold Prints" },
+                { href: "/collections/essential", label: "Essentials" },
+              ].map((link) => (
+                <li key={link.href}>
+                  <Link
+                    href={link.href}
+                    className="text-sm text-white/70 hover:text-white transition-colors focus-ring"
+                  >
+                    {link.label}
+                  </Link>
+                </li>
+              ))}
             </ul>
           </div>
 
@@ -56,7 +59,10 @@ export function Footer() {
             </h4>
             <ul className="space-y-3">
               <li>
-                <Link href="/our-story" className="text-sm text-white/70 hover:text-white transition-colors">
+                <Link
+                  href="/our-story"
+                  className="text-sm text-white/70 hover:text-white transition-colors focus-ring"
+                >
                   Our Story
                 </Link>
               </li>
@@ -71,6 +77,16 @@ export function Footer() {
               </li>
             </ul>
           </div>
+        </div>
+
+        {/* Bottom bar */}
+        <div className="mt-14 pt-6 border-t border-white/10 flex flex-col md:flex-row items-center justify-between gap-4">
+          <p className="text-xs text-white/40">
+            &copy; {new Date().getFullYear()} Gerimis. All rights reserved.
+          </p>
+          <p className="text-xs text-white/30">
+            Designed in Bali, for the world.
+          </p>
         </div>
       </div>
     </footer>

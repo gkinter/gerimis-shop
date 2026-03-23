@@ -1,7 +1,7 @@
 export const heroSlides = [
   {
     name: "Embrace the Drizzle",
-    subtitle: "Artful raincoats born in Bali",
+    subtitle: "Artful rain ponchos born in Bali",
     slug: "new",
     image: "/products/bali-sunrise.png",
   },

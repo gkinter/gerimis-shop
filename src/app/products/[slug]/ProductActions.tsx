@@ -12,6 +12,7 @@ export function ProductActions({ product }: ProductActionsProps) {
   const { addItem } = useCart();
   const [selectedSize, setSelectedSize] = useState<string>("");
   const [showSizeError, setShowSizeError] = useState(false);
+  const [added, setAdded] = useState(false);
 
   const handleAddToCart = () => {
     if (!selectedSize) {
@@ -20,21 +21,23 @@ export function ProductActions({ product }: ProductActionsProps) {
     }
     setShowSizeError(false);
     addItem(product);
+    setAdded(true);
+    setTimeout(() => setAdded(false), 2000);
   };
 
   return (
-    <div className="space-y-4">
+    <div className="space-y-5">
       {/* Size selector */}
       <div>
-        <div className="flex items-center justify-between mb-2">
+        <div className="flex items-center justify-between mb-3">
           <p className="text-xs uppercase tracking-widest text-gray-500">
             Size
           </p>
-          <button className="text-xs text-[var(--color-accent)] underline">
+          <button className="text-xs text-[var(--color-accent)] underline hover:opacity-70 transition-opacity focus-ring">
             Size Guide
           </button>
         </div>
-        <div className="flex gap-2">
+        <div className="flex flex-wrap gap-2">
           {product.sizes.map((size) => (
             <button
               key={size}
@@ -42,7 +45,7 @@ export function ProductActions({ product }: ProductActionsProps) {
                 setSelectedSize(size);
                 setShowSizeError(false);
               }}
-              className={`w-12 h-12 border text-sm transition-all ${
+              className={`min-w-[48px] h-12 px-3 border text-sm transition-all duration-200 rounded-sm focus-ring ${
                 selectedSize === size
                   ? "border-black bg-black text-white"
                   : "border-black/20 hover:border-black"
@@ -53,7 +56,9 @@ export function ProductActions({ product }: ProductActionsProps) {
           ))}
         </div>
         {showSizeError && (
-          <p className="text-xs text-red-500 mt-2">Please select a size</p>
+          <p className="text-xs text-[var(--color-coral)] mt-2 animate-fade-in-up" style={{ animationDuration: "0.3s" }}>
+            Please select a size
+          </p>
         )}
       </div>
 
@@ -61,9 +66,15 @@ export function ProductActions({ product }: ProductActionsProps) {
       <button
         onClick={handleAddToCart}
         disabled={product.soldOut}
-        className="w-full py-4 bg-[var(--color-accent)] text-white text-xs uppercase tracking-[0.2em] hover:bg-[var(--color-accent-hover)] transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+        className={`w-full py-4 text-xs uppercase tracking-[0.2em] transition-all duration-200 btn-tactile focus-ring rounded-sm ${
+          added
+            ? "bg-[var(--color-jungle)] text-white"
+            : product.soldOut
+            ? "bg-gray-200 text-gray-400 cursor-not-allowed"
+            : "bg-[var(--color-accent)] text-white hover:bg-[var(--color-accent-hover)]"
+        }`}
       >
-        {product.soldOut ? "Sold Out" : "Add to Bag"}
+        {product.soldOut ? "Sold Out" : added ? "Added to Bag!" : "Add to Bag"}
       </button>
     </div>
   );

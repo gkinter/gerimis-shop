@@ -4,7 +4,7 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "Our Story — Gerimis",
   description:
-    "How a love for Bali's rain led to the creation of Gerimis — colorful, sustainable raincoats designed in Canggu.",
+    "How a love for Bali's rain led to the creation of Gerimis — colorful, sustainable rain ponchos designed in Canggu.",
 };
 
 export default function OurStoryPage() {
@@ -43,12 +43,12 @@ export default function OurStoryPage() {
             </p>
             <p>
               Soaking wet and laughing, they looked at each other and asked: why
-              does rain gear have to be so... ugly? Why can&apos;t a raincoat be
+              does rain gear have to be so... ugly? Why can&apos;t a rain poncho be
               as colorful and alive as the island itself?
             </p>
             <p>
               That was 2024. Today, Gerimis (Indonesian for &ldquo;drizzle&rdquo;)
-              creates raincoats that are as much about self-expression as they
+              creates rain ponchos that are as much about self-expression as they
               are about staying dry.
             </p>
           </div>
@@ -66,7 +66,7 @@ export default function OurStoryPage() {
             <p>
               In Bali, rain isn&apos;t an inconvenience — it&apos;s a blessing.
               Farmers celebrate it. Temples welcome it. Children play in it.
-              Gerimis carries that spirit: we make raincoats for people who see
+              Gerimis carries that spirit: we make rain ponchos for people who see
               a downpour and smile.
             </p>
             <p>
@@ -93,19 +93,19 @@ export default function OurStoryPage() {
               see the monsoon floods carrying trash to the sea.
             </p>
             <p>
-              That&apos;s why every Gerimis raincoat is made from 100% recycled
+              That&apos;s why every Gerimis poncho is made from 100% recycled
               polyester — much of it recovered from ocean-bound plastic. Our PU
               waterproof coating is solvent-free. Our packaging is plastic-free.
               Our tote bags are organic cotton.
             </p>
             <p>
-              We&apos;re not perfect. But we&apos;re committed. Every coat we make is a
+              We&apos;re not perfect. But we&apos;re committed. Every poncho we make is a
               small act of care for the waters that surround us.
             </p>
           </div>
 
-          <div className="grid grid-cols-3 gap-6 mt-10 text-center">
-            <div className="bg-[var(--color-sand)] p-6 rounded-sm">
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6 mt-10 text-center">
+            <div className="bg-[var(--color-sand)] p-6 sm:p-6 rounded-sm">
               <p className="font-[family-name:var(--font-display)] text-3xl text-[var(--color-jungle)]">
                 100%
               </p>
@@ -113,7 +113,7 @@ export default function OurStoryPage() {
                 Recycled Materials
               </p>
             </div>
-            <div className="bg-[var(--color-sand)] p-6 rounded-sm">
+            <div className="bg-[var(--color-sand)] p-6 sm:p-6 rounded-sm">
               <p className="font-[family-name:var(--font-display)] text-3xl text-[var(--color-ocean)]">
                 0
               </p>
@@ -121,12 +121,12 @@ export default function OurStoryPage() {
                 Plastic Packaging
               </p>
             </div>
-            <div className="bg-[var(--color-sand)] p-6 rounded-sm">
+            <div className="bg-[var(--color-sand)] p-6 sm:p-6 rounded-sm">
               <p className="font-[family-name:var(--font-display)] text-3xl text-[var(--color-accent)]">
                 12kg
               </p>
               <p className="text-[10px] uppercase tracking-widest mt-2 text-gray-500">
-                Plastic Saved Per Coat
+                Plastic Saved Per Poncho
               </p>
             </div>
           </div>
@@ -158,7 +158,7 @@ export default function OurStoryPage() {
         <section className="text-center pt-8">
           <Link
             href="/collections/all"
-            className="inline-block bg-[var(--color-accent)] text-white text-xs uppercase tracking-[0.25em] px-12 py-4 hover:bg-[var(--color-accent-hover)] transition-colors"
+            className="inline-block bg-[var(--color-accent)] text-white text-xs uppercase tracking-[0.25em] px-12 py-4 hover:bg-[var(--color-accent-hover)] transition-colors btn-tactile focus-ring rounded-sm"
           >
             Shop the Collection
           </Link>

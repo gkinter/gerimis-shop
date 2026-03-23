@@ -14,8 +14,21 @@ export function ProductGrid({ products, columns = 4 }: ProductGridProps) {
     6: "grid-cols-2 md:grid-cols-3 lg:grid-cols-6",
   };
 
+  if (products.length === 0) {
+    return (
+      <div className="text-center py-16">
+        <p className="font-[family-name:var(--font-display)] text-xl text-gray-400 mb-2">
+          No ponchos here... yet
+        </p>
+        <p className="text-sm text-gray-400">
+          Check back soon for new drops.
+        </p>
+      </div>
+    );
+  }
+
   return (
-    <div className={`grid ${gridCols[columns]} gap-4 md:gap-6`}>
+    <div className={`grid ${gridCols[columns]} gap-x-4 gap-y-8 md:gap-x-6 md:gap-y-10`}>
       {products.map((product) => (
         <ProductCard key={product.slug} product={product} />
       ))}

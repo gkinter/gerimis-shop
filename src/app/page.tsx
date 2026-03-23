@@ -34,13 +34,13 @@ export default function HomePage() {
           It&apos;s something to <em>celebrate</em>.
         </h2>
         <p className="mt-6 text-sm text-gray-600 max-w-lg mx-auto leading-relaxed">
-          Gerimis creates colorful, artfully designed raincoats from recycled
+          Gerimis creates colorful, artfully designed rain ponchos from recycled
           materials. Each piece is inspired by the landscapes, textures, and
           spirit of Indonesia — from Ubud&apos;s jungles to Nusa Penida&apos;s coral reefs.
         </p>
         <Link
           href="/our-story"
-          className="inline-block mt-8 text-xs uppercase tracking-[0.2em] border-b border-[var(--color-accent)] text-[var(--color-accent)] pb-1 hover:opacity-70 transition-opacity"
+          className="inline-block mt-8 text-xs uppercase tracking-[0.2em] border-b border-[var(--color-accent)] text-[var(--color-accent)] pb-1 hover:opacity-70 transition-opacity focus-ring"
         >
           Read Our Story
         </Link>
@@ -59,7 +59,7 @@ export default function HomePage() {
           </div>
           <Link
             href="/collections/new"
-            className="text-xs uppercase tracking-[0.15em] border-b border-black/30 pb-0.5 hover:border-black transition-colors"
+            className="text-xs uppercase tracking-[0.15em] border-b border-black/30 pb-0.5 hover:border-black transition-colors focus-ring"
           >
             View All
           </Link>
@@ -76,7 +76,7 @@ export default function HomePage() {
               Recycled Materials
             </h3>
             <p className="text-xs text-white/60 max-w-xs mx-auto">
-              Every coat is made from 100% recycled polyester. We turn ocean-bound
+              Every poncho is made from 100% recycled polyester. We turn ocean-bound
               plastic into your favorite rain gear.
             </p>
           </div>
@@ -133,7 +133,7 @@ export default function HomePage() {
           </div>
           <Link
             href="/collections/bestseller"
-            className="text-xs uppercase tracking-[0.15em] border-b border-black/30 pb-0.5 hover:border-black transition-colors"
+            className="text-xs uppercase tracking-[0.15em] border-b border-black/30 pb-0.5 hover:border-black transition-colors focus-ring"
           >
             View All
           </Link>
@@ -172,7 +172,7 @@ export default function HomePage() {
             We started Gerimis in a small studio in Canggu, Bali, with a simple
             idea: rain gear shouldn&apos;t be boring. Inspired by the colors of
             Indonesian nature and fueled by a commitment to sustainability, we
-            make raincoats that you&apos;ll actually want to wear.
+            make rain ponchos that you&apos;ll actually want to wear.
           </p>
           <Link
             href="/our-story"
@@ -180,6 +180,32 @@ export default function HomePage() {
           >
             Read the Full Story
           </Link>
+        </div>
+      </section>
+
+      {/* Lifestyle Gallery */}
+      <section className="px-4 md:px-8 pb-16">
+        <div className="text-center mb-10">
+          <p className="text-[10px] uppercase tracking-[0.3em] text-[var(--color-accent)] mb-1">
+            In the Wild
+          </p>
+          <h2 className="font-[family-name:var(--font-display)] text-xl md:text-2xl font-light">
+            Gerimis in Action
+          </h2>
+        </div>
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-2">
+          <div className="aspect-square overflow-hidden">
+            <img src="/lifestyle/lifestyle-scooter.png" alt="Scooter ride in Bali rain" className="w-full h-full object-cover hover:scale-105 transition-transform duration-500" />
+          </div>
+          <div className="aspect-square overflow-hidden">
+            <img src="/lifestyle/lifestyle-rice-terrace.png" alt="Rice terrace walk" className="w-full h-full object-cover hover:scale-105 transition-transform duration-500" />
+          </div>
+          <div className="aspect-square overflow-hidden">
+            <img src="/lifestyle/lifestyle-surfer.png" alt="Surfer in rain" className="w-full h-full object-cover hover:scale-105 transition-transform duration-500" />
+          </div>
+          <div className="aspect-square overflow-hidden">
+            <img src="/lifestyle/lifestyle-cafe.png" alt="Bali cafe in rain" className="w-full h-full object-cover hover:scale-105 transition-transform duration-500" />
+          </div>
         </div>
       </section>
 

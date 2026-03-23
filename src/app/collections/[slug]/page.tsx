@@ -20,8 +20,8 @@ export async function generateMetadata({
   const { slug } = await params;
   const collection = allCollections.find((c) => c.slug === slug);
   const title = collection
-    ? `${collection.name} — Gerimis Raincoats`
-    : "All Raincoats — Gerimis";
+    ? `${collection.name} — Gerimis Rain Ponchos`
+    : "All Rain Ponchos — Gerimis";
   return { title };
 }
 
@@ -38,7 +38,7 @@ export default async function CollectionPage({
   const displayProducts =
     collectionProducts.length > 0 ? collectionProducts : products;
 
-  const title = collection?.name ?? "All Raincoats";
+  const title = collection?.name ?? "All Rain Ponchos";
 
   return (
     <>
@@ -46,14 +46,18 @@ export default async function CollectionPage({
 
       {/* Collection header */}
       {collection ? (
-        <div className="relative h-[35vh] md:h-[45vh] overflow-hidden bg-[var(--color-sand)]">
+        <div className="relative h-[40vh] md:h-[50vh] overflow-hidden bg-[var(--color-sand)]">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
             src={collection.image}
             alt={collection.name}
             className="w-full h-full object-cover"
+            onError={(e: React.SyntheticEvent<HTMLImageElement>) => {
+              e.currentTarget.style.display = "none";
+            }}
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-black/10 to-transparent" />
-          <div className="absolute inset-0 flex items-end justify-start p-8 md:p-16">
+          <div className="absolute inset-0 bg-gradient-to-t from-black/55 via-black/15 to-transparent" />
+          <div className="absolute inset-0 flex items-end justify-start p-6 md:p-16">
             <div>
               <h1 className="font-[family-name:var(--font-display)] text-3xl md:text-5xl text-white font-light">
                 {collection.name}
@@ -63,14 +67,14 @@ export default async function CollectionPage({
                   {collection.description}
                 </p>
               )}
-              <p className="text-xs text-white/50 mt-2">
-                {displayProducts.length} items
+              <p className="text-xs text-white/50 mt-3">
+                {displayProducts.length} {displayProducts.length === 1 ? "item" : "items"}
               </p>
             </div>
           </div>
         </div>
       ) : (
-        <div className="text-center py-16 bg-[var(--color-sand)]">
+        <div className="text-center py-16 md:py-20 bg-[var(--color-sand)]">
           <p className="text-[10px] uppercase tracking-[0.3em] text-[var(--color-accent)] mb-2">
             Gerimis
           </p>
@@ -78,7 +82,7 @@ export default async function CollectionPage({
             {title}
           </h1>
           <p className="text-sm text-gray-500 mt-2">
-            {displayProducts.length} items
+            {displayProducts.length} {displayProducts.length === 1 ? "item" : "items"}
           </p>
         </div>
       )}

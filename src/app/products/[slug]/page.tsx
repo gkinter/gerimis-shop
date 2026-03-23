@@ -1,4 +1,4 @@
-import { products, getProductBySlug, getProductsByTag } from "@/data/products";
+import { products, getProductBySlug } from "@/data/products";
 import { formatPrice } from "@/lib/utils";
 import { ProductGrid } from "@/components/ProductGrid";
 import { notFound } from "next/navigation";
@@ -19,7 +19,7 @@ export async function generateMetadata({
   const product = getProductBySlug(slug);
   if (!product) return { title: "Not Found" };
   return {
-    title: `${product.name} — Gerimis Raincoats`,
+    title: `${product.name} — Gerimis Rain Ponchos`,
     description: product.description,
   };
 }
@@ -40,10 +40,10 @@ export default async function ProductPage({
   return (
     <>
       {/* Breadcrumb */}
-      <nav className="px-4 md:px-8 py-4 text-xs text-gray-400">
-        <Link href="/" className="hover:text-gray-600">Home</Link>
+      <nav className="px-4 md:px-8 py-4 text-xs text-gray-400" aria-label="Breadcrumb">
+        <Link href="/" className="hover:text-gray-600 focus-ring">Home</Link>
         <span className="mx-2">/</span>
-        <Link href="/collections/all" className="hover:text-gray-600">Shop</Link>
+        <Link href="/collections/all" className="hover:text-gray-600 focus-ring">Shop</Link>
         <span className="mx-2">/</span>
         <span className="text-gray-600">{product.name}</span>
       </nav>
@@ -54,7 +54,7 @@ export default async function ProductPage({
           <ProductGallery images={product.images} name={product.name} />
 
           {/* Product info */}
-          <div className="lg:sticky lg:top-32 lg:self-start space-y-6">
+          <div className="lg:sticky lg:top-36 lg:self-start space-y-6">
             <div>
               <p className="text-[10px] uppercase tracking-[0.3em] text-[var(--color-accent)] mb-2">
                 {product.category}
@@ -92,9 +92,9 @@ export default async function ProductPage({
             {/* Details accordion */}
             <div className="space-y-0 border-t border-black/10">
               <details className="border-b border-black/10 py-4 group">
-                <summary className="flex justify-between items-center cursor-pointer text-xs uppercase tracking-widest">
+                <summary className="flex justify-between items-center cursor-pointer text-xs uppercase tracking-widest focus-ring py-1">
                   Details & Features
-                  <span className="text-lg group-open:rotate-45 transition-transform">+</span>
+                  <span className="text-lg group-open:rotate-45 transition-transform duration-200">+</span>
                 </summary>
                 <ul className="mt-3 space-y-2">
                   {product.details.map((detail, i) => (
@@ -107,9 +107,9 @@ export default async function ProductPage({
               </details>
 
               <details className="border-b border-black/10 py-4 group">
-                <summary className="flex justify-between items-center cursor-pointer text-xs uppercase tracking-widest">
+                <summary className="flex justify-between items-center cursor-pointer text-xs uppercase tracking-widest focus-ring py-1">
                   Materials
-                  <span className="text-lg group-open:rotate-45 transition-transform">+</span>
+                  <span className="text-lg group-open:rotate-45 transition-transform duration-200">+</span>
                 </summary>
                 <div className="mt-3 space-y-2">
                   {product.materials.map((mat, i) => (
@@ -119,9 +119,9 @@ export default async function ProductPage({
               </details>
 
               <details className="border-b border-black/10 py-4 group">
-                <summary className="flex justify-between items-center cursor-pointer text-xs uppercase tracking-widest">
+                <summary className="flex justify-between items-center cursor-pointer text-xs uppercase tracking-widest focus-ring py-1">
                   Shipping
-                  <span className="text-lg group-open:rotate-45 transition-transform">+</span>
+                  <span className="text-lg group-open:rotate-45 transition-transform duration-200">+</span>
                 </summary>
                 <div className="mt-3 space-y-2 text-sm text-gray-600">
                   <p>Ships from: {product.shippingFrom}</p>
@@ -135,9 +135,9 @@ export default async function ProductPage({
             {/* Share */}
             <div className="flex gap-4 text-xs text-gray-400 pt-2">
               <span className="uppercase tracking-widest">Share:</span>
-              <a href="#" className="hover:text-[var(--color-accent)]">Facebook</a>
-              <a href="#" className="hover:text-[var(--color-accent)]">X</a>
-              <a href="#" className="hover:text-[var(--color-accent)]">Pinterest</a>
+              <a href="#" className="hover:text-[var(--color-accent)] transition-colors focus-ring">Facebook</a>
+              <a href="#" className="hover:text-[var(--color-accent)] transition-colors focus-ring">X</a>
+              <a href="#" className="hover:text-[var(--color-accent)] transition-colors focus-ring">Pinterest</a>
             </div>
           </div>
         </div>
@@ -151,7 +151,7 @@ export default async function ProductPage({
               You May Also Like
             </p>
             <h2 className="font-[family-name:var(--font-display)] text-xl font-light">
-              More Raincoats
+              More Rain Ponchos
             </h2>
           </div>
           <ProductGrid products={related} columns={4} />

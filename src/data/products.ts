@@ -6,6 +6,7 @@ export interface Product {
   description: string;
   details: string[];
   images: string[];
+  lifestyleImage?: string;
   category: string;
   color: string;
   sizes: string[];
@@ -23,17 +24,18 @@ export const products: Product[] = [
     name: "Bali Sunrise",
     price: 89,
     description:
-      "Warm coral-to-orange ombre that captures the magic of a Balinese dawn. Lightweight, waterproof, and impossibly beautiful — for those who refuse to let rain dampen their style.",
+      "Warm coral-to-orange ombre that captures the magic of a Balinese dawn. Lightweight, waterproof, and impossibly beautiful — a rain poncho for those who refuse to let rain dampen their style.",
     details: [
       "100% recycled polyester shell with PU coating",
       "Seam-sealed waterproof construction",
       "Adjustable hood with hidden drawcord",
       "Two side pockets with storm flaps",
       "Interior pocket for phone",
-      "Snap-button front closure",
+      "Pullover design with side snaps",
       "GERIMIS logo embroidered on chest",
     ],
     images: ["/products/bali-sunrise.png"],
+    lifestyleImage: "/lifestyle/lifestyle-scooter.png",
     category: "Ombre Collection",
     color: "Coral / Orange",
     sizes: ["XS", "S", "M", "L", "XL"],
@@ -48,7 +50,7 @@ export const products: Product[] = [
     name: "Jungle Monsoon",
     price: 95,
     description:
-      "Deep tropical green adorned with hand-drawn banana leaf patterns. Inspired by Ubud's lush jungles during the wet season — when everything comes alive.",
+      "Deep tropical green adorned with hand-drawn banana leaf patterns. A rain poncho inspired by Ubud's lush jungles during the wet season — when everything comes alive.",
     details: [
       "100% recycled polyester shell with PU coating",
       "All-over banana leaf print",
@@ -58,6 +60,7 @@ export const products: Product[] = [
       "GERIMIS woven label on back yoke",
     ],
     images: ["/products/jungle-monsoon.png"],
+    lifestyleImage: "/lifestyle/lifestyle-rice-terrace.png",
     category: "Print Collection",
     color: "Tropical Green",
     sizes: ["XS", "S", "M", "L", "XL"],
@@ -72,16 +75,17 @@ export const products: Product[] = [
     name: "Ocean Drizzle",
     price: 89,
     description:
-      "Ocean blue with abstract raindrop patterns that ripple across the fabric like water hitting the sea. For surf-town mornings and coastal strolls.",
+      "Ocean blue rain poncho with abstract raindrop patterns that ripple across the fabric like water hitting the sea. For surf-town mornings and coastal strolls.",
     details: [
       "100% recycled polyester shell",
       "Abstract raindrop print",
       "Lightweight packable design",
       "Rolls into its own pocket",
-      "YKK zippers throughout",
+      "Snap-button side closures",
       "GERIMIS logo printed on left chest",
     ],
     images: ["/products/ocean-drizzle.png"],
+    lifestyleImage: "/lifestyle/lifestyle-surfer.png",
     category: "Print Collection",
     color: "Ocean Blue",
     sizes: ["XS", "S", "M", "L", "XL"],
@@ -96,7 +100,7 @@ export const products: Product[] = [
     price: 95,
     originalPrice: 110,
     description:
-      "Charcoal grey with subtle geometric patterns inspired by Balinese temple carvings. The understated choice for those who keep it cool even in a downpour.",
+      "Charcoal grey rain poncho with subtle geometric patterns inspired by Balinese temple carvings. The understated choice for those who keep it cool even in a downpour.",
     details: [
       "100% recycled polyester shell",
       "Geometric temple-inspired pattern",
@@ -106,6 +110,7 @@ export const products: Product[] = [
       "GERIMIS metal badge on chest",
     ],
     images: ["/products/volcanic-ash.png"],
+    lifestyleImage: "/lifestyle/lifestyle-temple.png",
     category: "Essential Collection",
     color: "Charcoal Grey",
     sizes: ["S", "M", "L", "XL"],
@@ -119,7 +124,7 @@ export const products: Product[] = [
     name: "Temple Gold",
     price: 99,
     description:
-      "Golden yellow with batik-inspired patterns that pay homage to Indonesia's rich textile heritage. A sunshine-colored shield against the rain.",
+      "Golden yellow poncho with batik-inspired patterns that pay homage to Indonesia's rich textile heritage. A sunshine-colored shield against the rain.",
     details: [
       "100% recycled polyester shell",
       "Batik-inspired heritage print",
@@ -128,6 +133,7 @@ export const products: Product[] = [
       "Reflective GERIMIS logo for visibility",
     ],
     images: ["/products/temple-gold.png"],
+    lifestyleImage: "/lifestyle/lifestyle-street-food.png",
     category: "Heritage Collection",
     color: "Golden Yellow",
     sizes: ["XS", "S", "M", "L", "XL"],
@@ -141,7 +147,7 @@ export const products: Product[] = [
     name: "Frangipani Pink",
     price: 89,
     description:
-      "Vibrant pink with delicate floral motifs inspired by Bali's iconic frangipani blossoms. Bold, joyful, unapologetically colorful.",
+      "Vibrant pink poncho with delicate floral motifs inspired by Bali's iconic frangipani blossoms. Bold, joyful, unapologetically colorful.",
     details: [
       "100% recycled polyester shell",
       "Frangipani floral print",
@@ -151,6 +157,7 @@ export const products: Product[] = [
       "GERIMIS embroidered logo",
     ],
     images: ["/products/frangipani-pink.png"],
+    lifestyleImage: "/lifestyle/lifestyle-bicycle.png",
     category: "Print Collection",
     color: "Magenta / Pink",
     sizes: ["XS", "S", "M", "L"],
@@ -164,16 +171,17 @@ export const products: Product[] = [
     name: "Rice Terrace",
     price: 85,
     description:
-      "Sage green and earth tones in gentle stripes that echo the layered beauty of Tegallalang's rice paddies. Calm, grounded, naturally beautiful.",
+      "Sage green and earth tones in gentle stripes that echo the layered beauty of Tegallalang's rice paddies. A calm, grounded rain poncho — naturally beautiful.",
     details: [
       "100% recycled polyester shell",
       "Tonal stripe pattern",
       "Relaxed A-line fit",
-      "Two-way front zipper",
+      "Wide poncho cut for easy layering",
       "Packable into included tote bag",
       "GERIMIS tonal logo on back",
     ],
     images: ["/products/rice-terrace.png"],
+    lifestyleImage: "/lifestyle/lifestyle-cafe.png",
     category: "Essential Collection",
     color: "Sage / Earth",
     sizes: ["XS", "S", "M", "L", "XL"],
@@ -187,7 +195,7 @@ export const products: Product[] = [
     name: "Coral Reef",
     price: 95,
     description:
-      "A riot of tropical color in an abstract coral print. Inspired by the vibrant underwater world of Nusa Penida. For maximalists who embrace the storm.",
+      "A riot of tropical color in an abstract coral print poncho. Inspired by the vibrant underwater world of Nusa Penida. For maximalists who embrace the storm.",
     details: [
       "100% recycled polyester shell",
       "Multi-color abstract coral print",
@@ -197,6 +205,7 @@ export const products: Product[] = [
       "GERIMIS printed logo on chest and back",
     ],
     images: ["/products/coral-reef.png"],
+    lifestyleImage: "/lifestyle/lifestyle-beach-club.png",
     category: "Print Collection",
     color: "Multicolor",
     sizes: ["S", "M", "L", "XL"],
