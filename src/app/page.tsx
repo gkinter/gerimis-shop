@@ -176,7 +176,7 @@ export default function HomePage() {
           </p>
           <Link
             href="/our-story"
-            className="inline-block mt-8 border-2 border-white text-white text-xs uppercase tracking-[0.25em] px-10 py-4 hover:bg-white hover:text-[var(--color-volcanic)] transition-all duration-300"
+            className="inline-block mt-8 border-2 border-white text-white text-xs uppercase tracking-[0.25em] px-10 py-4 hover:bg-white hover:text-[var(--color-volcanic)] transition-all duration-300 focus-ring"
           >
             Read the Full Story
           </Link>
@@ -194,18 +194,27 @@ export default function HomePage() {
           </h2>
         </div>
         <div className="grid grid-cols-2 md:grid-cols-4 gap-2">
-          <div className="aspect-square overflow-hidden">
-            <img src="/lifestyle/lifestyle-scooter.png" alt="Scooter ride in Bali rain" className="w-full h-full object-cover hover:scale-105 transition-transform duration-500" />
-          </div>
-          <div className="aspect-square overflow-hidden">
-            <img src="/lifestyle/lifestyle-rice-terrace.png" alt="Rice terrace walk" className="w-full h-full object-cover hover:scale-105 transition-transform duration-500" />
-          </div>
-          <div className="aspect-square overflow-hidden">
-            <img src="/lifestyle/lifestyle-surfer.png" alt="Surfer in rain" className="w-full h-full object-cover hover:scale-105 transition-transform duration-500" />
-          </div>
-          <div className="aspect-square overflow-hidden">
-            <img src="/lifestyle/lifestyle-cafe.png" alt="Bali cafe in rain" className="w-full h-full object-cover hover:scale-105 transition-transform duration-500" />
-          </div>
+          {[
+            { src: "/lifestyle/lifestyle-scooter.png", alt: "Scooter ride in Bali rain", emoji: "\u{1F6F5}" },
+            { src: "/lifestyle/lifestyle-rice-terrace.png", alt: "Rice terrace walk", emoji: "\u{1F33E}" },
+            { src: "/lifestyle/lifestyle-surfer.png", alt: "Surfer in rain", emoji: "\u{1F3C4}" },
+            { src: "/lifestyle/lifestyle-cafe.png", alt: "Bali cafe in rain", emoji: "\u2615" },
+          ].map((item) => (
+            <div key={item.alt} className="aspect-square overflow-hidden rounded-sm bg-[var(--color-sand)] relative group">
+              <img
+                src={item.src}
+                alt={item.alt}
+                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                onError={(e: React.SyntheticEvent<HTMLImageElement>) => {
+                  e.currentTarget.style.display = "none";
+                }}
+              />
+              {/* Fallback shown when image fails (sand bg already visible) */}
+              <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+                <span className="text-4xl opacity-20">{item.emoji}</span>
+              </div>
+            </div>
+          ))}
         </div>
       </section>
 

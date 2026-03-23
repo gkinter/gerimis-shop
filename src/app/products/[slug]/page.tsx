@@ -143,6 +143,23 @@ export default async function ProductPage({
         </div>
       </div>
 
+      {/* Lifestyle image */}
+      {product.lifestyleImage && (
+        <section className="px-4 md:px-0 py-8">
+          <div className="aspect-[21/9] overflow-hidden bg-[var(--color-sand)] rounded-sm">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src={product.lifestyleImage}
+              alt={`${product.name} in action`}
+              className="w-full h-full object-cover"
+              onError={(e: React.SyntheticEvent<HTMLImageElement>) => {
+                e.currentTarget.style.display = "none";
+              }}
+            />
+          </div>
+        </section>
+      )}
+
       {/* Related products */}
       {related.length > 0 && (
         <section className="px-4 md:px-8 py-16 border-t border-black/5">
