@@ -13,11 +13,11 @@ export function ProductCard({ product }: ProductCardProps) {
   const [imgError, setImgError] = useState(false);
 
   return (
-    <Link href={`/products/${product.slug}`} className="group block product-card-lift rounded-sm focus-ring">
-      <div className="overflow-hidden aspect-[3/4] bg-[var(--color-sand)] rounded-sm relative">
+    <Link href={`/products/${product.slug}`} className="group block">
+      <div className="overflow-hidden aspect-square bg-[var(--color-sand)] rounded-sm relative">
         {imgError ? (
-          <div className="w-full h-full flex items-center justify-center bg-[var(--color-sand)]">
-            <span className="font-[family-name:var(--font-display)] text-lg text-[var(--color-accent)]/40">
+          <div className="w-full h-full flex items-center justify-center">
+            <span className="font-[family-name:var(--font-display)] text-lg text-black/10">
               Gerimis
             </span>
           </div>
@@ -25,36 +25,27 @@ export function ProductCard({ product }: ProductCardProps) {
           <img
             src={product.images[0]}
             alt={product.name}
-            className="w-full h-full object-cover product-image-zoom"
+            className="w-full h-full object-cover group-hover:scale-[1.03] transition-transform duration-700"
             loading="lazy"
             onError={() => setImgError(true)}
           />
         )}
-        {/* Sale indicator — subtle text, no colored badge */}
-        {product.originalPrice && (
-          <span className="absolute top-3 left-3 text-[10px] uppercase tracking-widest text-white/90 font-light">
-            Sale
-          </span>
-        )}
-        {/* Quick view hint on hover */}
-        <div className="absolute inset-0 bg-black/0 group-hover:bg-black/5 transition-colors duration-300" />
       </div>
-      <div className="mt-5 space-y-1.5">
-        <p className="label-editorial text-[var(--color-accent)]">
+      <div className="mt-3 space-y-0.5">
+        <p className="text-[9px] uppercase tracking-[0.3em] text-[var(--color-accent)]">
           {product.category}
         </p>
-        <h3 className="text-sm md:text-base font-medium group-hover:text-[var(--color-accent)] transition-colors duration-200 leading-snug">
+        <h3 className="text-sm font-medium group-hover:text-[var(--color-accent)] transition-colors leading-tight">
           {product.name}
         </h3>
-        <div className="flex items-center gap-2 pt-0.5">
-          <span className="text-sm font-light">{formatPrice(product.price)}</span>
+        <p className="text-sm text-gray-500 font-light">
+          {formatPrice(product.price)}
           {product.originalPrice && (
-            <span className="text-sm text-gray-400 line-through font-light">
+            <span className="ml-2 line-through text-gray-300">
               {formatPrice(product.originalPrice)}
             </span>
           )}
-        </div>
-        <p className="text-xs text-gray-500">{product.color}</p>
+        </p>
       </div>
     </Link>
   );
