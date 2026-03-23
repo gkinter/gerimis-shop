@@ -40,27 +40,24 @@ export default async function ProductPage({
   return (
     <>
       {/* Breadcrumb */}
-      <nav className="px-6 md:px-12 lg:px-16 py-5 text-xs text-gray-400" aria-label="Breadcrumb">
-        <div className="max-w-[1200px] mx-auto">
-          <Link href="/" className="hover:text-gray-600 focus-ring">Home</Link>
-          <span className="mx-2">/</span>
-          <Link href="/collections/all" className="hover:text-gray-600 focus-ring">Shop</Link>
-          <span className="mx-2">/</span>
-          <span className="text-gray-600">{product.name}</span>
-        </div>
+      <nav className="container-page py-4 text-xs text-gray-400" aria-label="Breadcrumb">
+        <Link href="/" className="hover:text-gray-600">Home</Link>
+        <span className="mx-2">/</span>
+        <Link href="/collections/all" className="hover:text-gray-600">Shop</Link>
+        <span className="mx-2">/</span>
+        <span className="text-gray-600">{product.name}</span>
       </nav>
 
-      <div className="px-0 md:px-12 lg:px-16 pb-24 md:pb-36">
-        <div className="max-w-[1200px] mx-auto grid grid-cols-1 lg:grid-cols-2 gap-0 lg:gap-24">
-          {/* Image gallery — full-bleed on mobile */}
-          <div className="md:px-0">
-            <ProductGallery images={product.images} name={product.name} />
-          </div>
+      {/* Product hero — 2 column */}
+      <div className="container-page pb-16 md:pb-24">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16">
+          {/* Image */}
+          <ProductGallery images={product.images} name={product.name} />
 
-          {/* Product info */}
-          <div className="lg:sticky lg:top-36 lg:self-start space-y-10 px-6 md:px-0 pt-8 lg:pt-0">
+          {/* Info */}
+          <div className="lg:sticky lg:top-32 lg:self-start space-y-6">
             <div>
-              <p className="label-editorial text-[var(--color-accent)] mb-3">
+              <p className="label-editorial text-[var(--color-accent)] mb-2">
                 {product.category}
               </p>
               <h1 className="font-[family-name:var(--font-display)] text-3xl md:text-4xl font-light">
@@ -69,112 +66,106 @@ export default async function ProductPage({
             </div>
 
             <div className="flex items-baseline gap-3">
-              <span className="price-whisper">
+              <span className="text-lg font-light tracking-wide">
                 {formatPrice(product.price)}
               </span>
               {product.originalPrice && (
-                <span className="text-sm text-gray-400 line-through font-light">
+                <span className="text-sm text-gray-400 line-through">
                   {formatPrice(product.originalPrice)}
                 </span>
               )}
             </div>
 
-            <p className="text-base text-gray-600 leading-relaxed max-w-md">
+            <p className="text-base text-gray-500 leading-relaxed max-w-md">
               {product.description}
             </p>
 
-            {/* Color swatch */}
-            <div>
-              <p className="label-editorial text-gray-500 mb-2">
-                Color: {product.color}
-              </p>
-            </div>
+            <p className="label-editorial text-gray-400">
+              Color: {product.color}
+            </p>
 
-            {/* Size + Add to cart */}
             <ProductActions product={product} />
 
-            {/* Details accordion */}
-            <div className="space-y-0 border-t border-black/5 pt-2">
-              <details className="border-b border-black/5 py-6 group">
-                <summary className="flex justify-between items-center cursor-pointer text-xs uppercase tracking-widest font-light focus-ring py-1">
-                  Details & Features
-                  <span className="text-base group-open:rotate-45 transition-transform duration-200">+</span>
-                </summary>
-                <ul className="mt-5 space-y-2.5">
-                  {product.details.map((detail, i) => (
-                    <li key={i} className="text-sm text-gray-600 flex items-start gap-2">
-                      <span className="text-[var(--color-accent)] mt-0.5">&#8226;</span>
-                      {detail}
-                    </li>
-                  ))}
-                </ul>
-              </details>
-
-              <details className="border-b border-black/5 py-6 group">
-                <summary className="flex justify-between items-center cursor-pointer text-xs uppercase tracking-widest font-light focus-ring py-1">
-                  Materials
-                  <span className="text-base group-open:rotate-45 transition-transform duration-200">+</span>
-                </summary>
-                <div className="mt-5 space-y-2.5">
-                  {product.materials.map((mat, i) => (
-                    <p key={i} className="text-sm text-gray-600">{mat}</p>
-                  ))}
-                </div>
-              </details>
-
-              <details className="border-b border-black/5 py-6 group">
-                <summary className="flex justify-between items-center cursor-pointer text-xs uppercase tracking-widest font-light focus-ring py-1">
-                  Shipping
-                  <span className="text-base group-open:rotate-45 transition-transform duration-200">+</span>
-                </summary>
-                <div className="mt-5 space-y-2.5 text-sm text-gray-600">
-                  <p>Ships from: {product.shippingFrom}</p>
-                  <p>Ships to: {product.shippingTo}</p>
-                  {product.leadTime && <p>Delivery: {product.leadTime}</p>}
-                  <p>Free shipping on orders over $150.</p>
-                </div>
-              </details>
+            {/* Details */}
+            <div className="border-t border-black/5 pt-2 space-y-0">
+              {[
+                {
+                  title: "Details & Features",
+                  content: (
+                    <ul className="mt-4 space-y-2">
+                      {product.details.map((d, i) => (
+                        <li key={i} className="text-sm text-gray-500 flex gap-2">
+                          <span className="text-[var(--color-accent)]">·</span>
+                          {d}
+                        </li>
+                      ))}
+                    </ul>
+                  ),
+                },
+                {
+                  title: "Materials",
+                  content: (
+                    <div className="mt-4 space-y-2">
+                      {product.materials.map((m, i) => (
+                        <p key={i} className="text-sm text-gray-500">{m}</p>
+                      ))}
+                    </div>
+                  ),
+                },
+                {
+                  title: "Shipping",
+                  content: (
+                    <div className="mt-4 space-y-1.5 text-sm text-gray-500">
+                      <p>From: {product.shippingFrom}</p>
+                      <p>To: {product.shippingTo}</p>
+                      {product.leadTime && <p>Delivery: {product.leadTime}</p>}
+                      <p className="pt-1">Free shipping on orders over $150.</p>
+                    </div>
+                  ),
+                },
+              ].map((section) => (
+                <details key={section.title} className="border-b border-black/5 py-5 group">
+                  <summary className="flex justify-between items-center cursor-pointer label-editorial text-gray-600">
+                    {section.title}
+                    <span className="text-sm group-open:rotate-45 transition-transform">+</span>
+                  </summary>
+                  {section.content}
+                </details>
+              ))}
             </div>
 
             {/* Share */}
-            <div className="flex gap-4 text-xs text-gray-400 pt-4">
-              <span className="uppercase tracking-widest">Share:</span>
-              <a href="#" className="hover:text-[var(--color-accent)] transition-colors focus-ring">Facebook</a>
-              <a href="#" className="hover:text-[var(--color-accent)] transition-colors focus-ring">X</a>
-              <a href="#" className="hover:text-[var(--color-accent)] transition-colors focus-ring">Pinterest</a>
+            <div className="flex gap-4 text-xs text-gray-400 pt-2">
+              <span className="label-editorial">Share:</span>
+              {["Facebook", "X", "Pinterest"].map((s) => (
+                <a key={s} href="#" className="hover:text-[var(--color-accent)] transition-colors">{s}</a>
+              ))}
             </div>
           </div>
         </div>
       </div>
 
-      {/* Lifestyle image */}
+      {/* Lifestyle image — full bleed */}
       {product.lifestyleImage && (
-        <section className="py-8">
-          <div className="aspect-[21/9] overflow-hidden bg-[var(--color-sand)]">
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              src={product.lifestyleImage}
-              alt={`${product.name} in action`}
-              className="w-full h-full object-cover"
-            />
-          </div>
-        </section>
+        <div className="aspect-[21/9] overflow-hidden bg-[var(--color-sand)]">
+          <img
+            src={product.lifestyleImage}
+            alt={`${product.name} in action`}
+            className="w-full h-full object-cover"
+          />
+        </div>
       )}
 
-      {/* Related products */}
+      {/* Related */}
       {related.length > 0 && (
-        <section className="px-6 md:px-12 lg:px-16 py-24 md:py-36 border-t border-black/5">
-          <div className="max-w-[1200px] mx-auto">
-            <div className="text-center mb-16 md:mb-20">
-              <p className="label-editorial text-[var(--color-accent)] mb-2">
-                You May Also Like
-              </p>
-              <h2 className="font-[family-name:var(--font-display)] text-xl font-light">
-                More Rain Ponchos
-              </h2>
-            </div>
-            <ProductGrid products={related} columns={4} />
+        <section className="container-page py-20 md:py-28">
+          <div className="text-center mb-10">
+            <p className="label-editorial text-[var(--color-accent)] mb-2">You May Also Like</p>
+            <h2 className="font-[family-name:var(--font-display)] text-xl font-light">
+              More Rain Ponchos
+            </h2>
           </div>
+          <ProductGrid products={related} columns={4} />
         </section>
       )}
     </>

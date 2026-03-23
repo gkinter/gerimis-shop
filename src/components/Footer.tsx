@@ -3,7 +3,7 @@ import Link from "next/link";
 export function Footer() {
   return (
     <footer className="bg-[var(--color-volcanic)] text-white">
-      <div className="max-w-[1200px] mx-auto px-6 md:px-12 lg:px-16 py-20 md:py-28">
+      <div className="container-page py-20 md:py-28">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-14 md:gap-12">
           {/* Brand */}
           <div className="md:col-span-2">
