@@ -4,7 +4,7 @@ import { ProductGrid } from "@/components/ProductGrid";
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import { ProductGallery } from "./ProductGallery";
-import { AddToCartButton } from "./AddToCartButton";
+import { ProductActions } from "./ProductActions";
 
 export function generateStaticParams() {
   return products.map((p) => ({ slug: p.slug }));
@@ -19,7 +19,7 @@ export async function generateMetadata({
   const product = getProductBySlug(slug);
   if (!product) return { title: "Not Found" };
   return {
-    title: `${product.name} by ${product.vendor} | I Can't Afford This But Maybe She Can`,
+    title: `${product.name} — Gerimis Raincoats`,
     description: product.description,
   };
 }
@@ -34,111 +34,110 @@ export default async function ProductPage({
   if (!product) notFound();
 
   const related = products
-    .filter((p) => p.slug !== product.slug && p.vendor === product.vendor)
+    .filter((p) => p.slug !== product.slug)
     .slice(0, 4);
-
-  const moreByTag = product.tags[0]
-    ? getProductsByTag(product.tags[0])
-        .filter((p) => p.slug !== product.slug)
-        .slice(0, 6)
-    : [];
 
   return (
     <>
-      <div className="px-4 md:px-8 py-8">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-16">
+      {/* Breadcrumb */}
+      <nav className="px-4 md:px-8 py-4 text-xs text-gray-400">
+        <Link href="/" className="hover:text-gray-600">Home</Link>
+        <span className="mx-2">/</span>
+        <Link href="/collections/all" className="hover:text-gray-600">Shop</Link>
+        <span className="mx-2">/</span>
+        <span className="text-gray-600">{product.name}</span>
+      </nav>
+
+      <div className="px-4 md:px-8 pb-16">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16">
           {/* Image gallery */}
           <ProductGallery images={product.images} name={product.name} />
 
           {/* Product info */}
-          <div className="space-y-6">
-            <h1 className="text-2xl md:text-3xl font-light">{product.name}</h1>
+          <div className="lg:sticky lg:top-32 lg:self-start space-y-6">
+            <div>
+              <p className="text-[10px] uppercase tracking-[0.3em] text-[var(--color-accent)] mb-2">
+                {product.category}
+              </p>
+              <h1 className="font-[family-name:var(--font-display)] text-3xl md:text-4xl font-light">
+                {product.name}
+              </h1>
+            </div>
 
-            <div className="flex items-center gap-3">
-              <span className="text-lg">{formatPrice(product.price)}</span>
+            <div className="flex items-baseline gap-3">
+              <span className="text-xl font-medium">
+                {formatPrice(product.price)}
+              </span>
               {product.originalPrice && (
-                <span className="text-lg text-gray-400 line-through">
+                <span className="text-base text-gray-400 line-through">
                   {formatPrice(product.originalPrice)}
                 </span>
               )}
             </div>
 
-            <p className="text-sm text-gray-500">
-              Sold by{" "}
-              <Link
-                href={`/collections/${product.vendorSlug}`}
-                className="underline hover:text-black transition-colors"
-              >
-                {product.vendor}
-              </Link>
-            </p>
-
-            <p className="text-sm leading-relaxed text-gray-700">
+            <p className="text-sm text-gray-600 leading-relaxed">
               {product.description}
             </p>
 
-            {/* Shipping details */}
-            <div className="border-t border-black/10 pt-4 space-y-2 text-sm">
-              <div className="flex justify-between">
-                <span className="text-gray-500">Shipping from</span>
-                <span>{product.shippingFrom}</span>
-              </div>
-              <div className="flex justify-between">
-                <span className="text-gray-500">Shipping to</span>
-                <span>{product.shippingTo}</span>
-              </div>
-              {product.leadTime && (
-                <div className="flex justify-between">
-                  <span className="text-gray-500">Lead time</span>
-                  <span>{product.leadTime}</span>
-                </div>
-              )}
+            {/* Color swatch */}
+            <div>
+              <p className="text-xs uppercase tracking-widest text-gray-500 mb-2">
+                Color: {product.color}
+              </p>
             </div>
 
-            {/* CTA buttons */}
-            <div className="space-y-3 pt-2">
-              <a
-                href={product.affiliateUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="block w-full py-3 border border-black text-center text-sm uppercase tracking-[0.15em] hover:bg-black hover:text-white transition-colors"
-              >
-                Go to shop &rarr;
-              </a>
-              <AddToCartButton product={product} />
+            {/* Size + Add to cart */}
+            <ProductActions product={product} />
+
+            {/* Details accordion */}
+            <div className="space-y-0 border-t border-black/10">
+              <details className="border-b border-black/10 py-4 group">
+                <summary className="flex justify-between items-center cursor-pointer text-xs uppercase tracking-widest">
+                  Details & Features
+                  <span className="text-lg group-open:rotate-45 transition-transform">+</span>
+                </summary>
+                <ul className="mt-3 space-y-2">
+                  {product.details.map((detail, i) => (
+                    <li key={i} className="text-sm text-gray-600 flex items-start gap-2">
+                      <span className="text-[var(--color-accent)] mt-0.5">&#8226;</span>
+                      {detail}
+                    </li>
+                  ))}
+                </ul>
+              </details>
+
+              <details className="border-b border-black/10 py-4 group">
+                <summary className="flex justify-between items-center cursor-pointer text-xs uppercase tracking-widest">
+                  Materials
+                  <span className="text-lg group-open:rotate-45 transition-transform">+</span>
+                </summary>
+                <div className="mt-3 space-y-2">
+                  {product.materials.map((mat, i) => (
+                    <p key={i} className="text-sm text-gray-600">{mat}</p>
+                  ))}
+                </div>
+              </details>
+
+              <details className="border-b border-black/10 py-4 group">
+                <summary className="flex justify-between items-center cursor-pointer text-xs uppercase tracking-widest">
+                  Shipping
+                  <span className="text-lg group-open:rotate-45 transition-transform">+</span>
+                </summary>
+                <div className="mt-3 space-y-2 text-sm text-gray-600">
+                  <p>Ships from: {product.shippingFrom}</p>
+                  <p>Ships to: {product.shippingTo}</p>
+                  {product.leadTime && <p>Delivery: {product.leadTime}</p>}
+                  <p>Free shipping on orders over $150.</p>
+                </div>
+              </details>
             </div>
 
             {/* Share */}
-            <div className="border-t border-black/10 pt-4">
-              <p className="text-xs uppercase tracking-wider text-gray-500 mb-2">
-                Share:
-              </p>
-              <div className="flex gap-4 text-xs">
-                <a
-                  href={`https://www.facebook.com/sharer.php?u=${encodeURIComponent(`https://icantaffordthis.vercel.app/products/${product.slug}`)}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="underline hover:text-[var(--color-accent)]"
-                >
-                  Facebook
-                </a>
-                <a
-                  href={`https://twitter.com/intent/tweet?text=${encodeURIComponent(product.name)}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="underline hover:text-[var(--color-accent)]"
-                >
-                  X
-                </a>
-                <a
-                  href={`https://pinterest.com/pin/create/button/?description=${encodeURIComponent(product.name)}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="underline hover:text-[var(--color-accent)]"
-                >
-                  Pinterest
-                </a>
-              </div>
+            <div className="flex gap-4 text-xs text-gray-400 pt-2">
+              <span className="uppercase tracking-widest">Share:</span>
+              <a href="#" className="hover:text-[var(--color-accent)]">Facebook</a>
+              <a href="#" className="hover:text-[var(--color-accent)]">X</a>
+              <a href="#" className="hover:text-[var(--color-accent)]">Pinterest</a>
             </div>
           </div>
         </div>
@@ -146,16 +145,16 @@ export default async function ProductPage({
 
       {/* Related products */}
       {related.length > 0 && (
-        <section className="px-4 md:px-8 py-12 border-t border-black/10">
-          <h2 className="text-lg font-light mb-6">You may like these</h2>
+        <section className="px-4 md:px-8 py-16 border-t border-black/5">
+          <div className="text-center mb-10">
+            <p className="text-[10px] uppercase tracking-[0.3em] text-[var(--color-accent)] mb-1">
+              You May Also Like
+            </p>
+            <h2 className="font-[family-name:var(--font-display)] text-xl font-light">
+              More Raincoats
+            </h2>
+          </div>
           <ProductGrid products={related} columns={4} />
-        </section>
-      )}
-
-      {moreByTag.length > 0 && (
-        <section className="px-4 md:px-8 py-12 border-t border-black/10">
-          <h2 className="text-lg font-light mb-6">More from the Bazaar</h2>
-          <ProductGrid products={moreByTag} columns={6} />
         </section>
       )}
     </>

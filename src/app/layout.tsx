@@ -1,24 +1,31 @@
 import type { Metadata } from "next";
-import { Montserrat } from "next/font/google";
+import { DM_Sans, Playfair_Display } from "next/font/google";
 import "./globals.css";
 import { Header } from "@/components/Header";
 import { CartProvider } from "@/components/CartProvider";
 import { Newsletter } from "@/components/Newsletter";
+import { Footer } from "@/components/Footer";
 
-const montserrat = Montserrat({
+const dmSans = DM_Sans({
   subsets: ["latin"],
   variable: "--font-sans",
   display: "swap",
 });
 
+const playfair = Playfair_Display({
+  subsets: ["latin"],
+  variable: "--font-display",
+  display: "swap",
+});
+
 export const metadata: Metadata = {
-  title: "I can't afford this but maybe she can",
+  title: "Gerimis — Colorful Raincoats from Bali",
   description:
-    "A curated Bazaar of design objects by independent designers and brands. Discover sculptural homeware, fashion, art and playful oddities.",
+    "Gerimis: artfully designed raincoats that celebrate the beauty of rain. Born in Bali, made for the world. Embrace the drizzle in style.",
   openGraph: {
-    title: "I can't afford this but maybe she can",
+    title: "Gerimis — Colorful Raincoats from Bali",
     description:
-      "A curated Bazaar of design objects by independent designers and brands.",
+      "Artfully designed raincoats that celebrate the beauty of rain. Born in Bali, made for the world.",
     type: "website",
   },
 };
@@ -29,11 +36,12 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={montserrat.variable}>
+    <html lang="en" className={`${dmSans.variable} ${playfair.variable}`}>
       <body className="font-sans antialiased">
         <CartProvider>
           <Header />
           <main>{children}</main>
+          <Footer />
           <Newsletter />
         </CartProvider>
       </body>

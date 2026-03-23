@@ -7,13 +7,12 @@ export function Newsletter() {
   const [email, setEmail] = useState("");
   const [submitted, setSubmitted] = useState(false);
 
-  // Show popup after 5 seconds on first visit
   useEffect(() => {
     const timer = setTimeout(() => {
       if (!sessionStorage.getItem("newsletter-dismissed")) {
         setOpen(true);
       }
-    }, 5000);
+    }, 8000);
     return () => clearTimeout(timer);
   }, []);
 
@@ -34,7 +33,7 @@ export function Newsletter() {
   return (
     <>
       <div className="fixed inset-0 bg-black/40 z-50" onClick={dismiss} />
-      <div className="fixed bottom-0 left-0 right-0 md:bottom-auto md:top-1/2 md:left-1/2 md:-translate-x-1/2 md:-translate-y-1/2 bg-white z-50 p-8 md:p-12 md:max-w-lg w-full shadow-2xl">
+      <div className="fixed bottom-0 left-0 right-0 md:bottom-auto md:top-1/2 md:left-1/2 md:-translate-x-1/2 md:-translate-y-1/2 bg-[#FEFCF8] z-50 p-8 md:p-12 md:max-w-md w-full shadow-2xl">
         <button
           onClick={dismiss}
           className="absolute top-4 right-4 text-xl hover:opacity-60 transition-opacity"
@@ -44,32 +43,45 @@ export function Newsletter() {
         </button>
 
         {submitted ? (
-          <p className="text-sm text-center">Thank you!</p>
+          <div className="text-center py-4">
+            <p className="font-[family-name:var(--font-display)] text-2xl mb-2">
+              Welcome to the crew!
+            </p>
+            <p className="text-sm text-gray-500">
+              Check your inbox for a little something.
+            </p>
+          </div>
         ) : (
           <>
-            <h3 className="text-lg font-medium mb-2">Hello there!</h3>
-            <p className="text-sm text-gray-600 mb-6">
-              Sign up to our newsletter, a publication packed with our latest
-              finds, new bazaar items, sales and a quirky artist interview.
+            <p className="text-[10px] uppercase tracking-[0.3em] text-[var(--color-accent)] mb-2">
+              Join the Drizzle Crew
+            </p>
+            <h3 className="font-[family-name:var(--font-display)] text-2xl font-light mb-2">
+              10% off your first coat
+            </h3>
+            <p className="text-sm text-gray-500 mb-6">
+              Plus early access to new drops, behind-the-scenes from Bali, and
+              rainy day playlists.
             </p>
             <form onSubmit={handleSubmit}>
               <input
                 type="email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                placeholder="Your email"
+                placeholder="your@email.com"
                 required
-                className="w-full border-b border-black pb-2 text-sm outline-none placeholder:text-gray-400 mb-6"
+                className="w-full border-b-2 border-black/20 focus:border-[var(--color-accent)] pb-2 text-sm outline-none placeholder:text-gray-300 mb-6 bg-transparent transition-colors"
               />
-              {/* Honeypot fields */}
               <input type="text" className="honey-field" tabIndex={-1} aria-hidden="true" />
-              <input type="email" className="honey-field" tabIndex={-1} aria-hidden="true" />
               <button
                 type="submit"
-                className="w-full py-3 border border-black text-xs uppercase tracking-[0.2em] hover:bg-black hover:text-white transition-colors"
+                className="w-full py-3 bg-[var(--color-accent)] text-white text-xs uppercase tracking-[0.2em] hover:bg-[var(--color-accent-hover)] transition-colors"
               >
-                Sign me up!
+                Join & Save 10%
               </button>
+              <p className="text-[10px] text-gray-400 text-center mt-3">
+                No spam. Unsubscribe anytime.
+              </p>
             </form>
           </>
         )}

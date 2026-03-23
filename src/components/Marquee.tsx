@@ -4,32 +4,32 @@ interface MarqueeProps {
   text: string;
   href: string;
   separator?: string;
+  variant?: "default" | "accent";
 }
 
-export function Marquee({ text, href, separator = "—" }: MarqueeProps) {
+export function Marquee({
+  text,
+  href,
+  separator = "~",
+  variant = "default",
+}: MarqueeProps) {
   const items = Array.from({ length: 20 }, (_, i) => i);
+  const bgClass =
+    variant === "accent"
+      ? "bg-[var(--color-accent)] text-white"
+      : "bg-transparent";
 
   return (
-    <div className="overflow-hidden border-y border-black/10 py-3">
+    <div className={`overflow-hidden py-3 ${bgClass}`}>
       <div className="animate-marquee flex whitespace-nowrap">
-        {items.map((i) => (
+        {[...items, ...items].map((i, idx) => (
           <Link
-            key={i}
+            key={idx}
             href={href}
-            className="text-xs uppercase tracking-[0.2em] font-medium hover:text-[var(--color-accent)] transition-colors mx-2"
+            className="text-[11px] uppercase tracking-[0.25em] font-medium hover:opacity-60 transition-opacity mx-3"
           >
             {text}
-            <span className="mx-2 text-gray-300">{separator}</span>
-          </Link>
-        ))}
-        {items.map((i) => (
-          <Link
-            key={`dup-${i}`}
-            href={href}
-            className="text-xs uppercase tracking-[0.2em] font-medium hover:text-[var(--color-accent)] transition-colors mx-2"
-          >
-            {text}
-            <span className="mx-2 text-gray-300">{separator}</span>
+            <span className="mx-3 opacity-30">{separator}</span>
           </Link>
         ))}
       </div>
