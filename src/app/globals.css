@@ -22,6 +22,8 @@
 
 body {
   font-family: var(--font-sans);
+  font-size: 16px;
+  line-height: 1.7;
   color: #1a1a1a;
   background: var(--color-cream);
   -webkit-font-smoothing: antialiased;
@@ -61,6 +63,21 @@ html {
 .no-scrollbar {
   -ms-overflow-style: none;
   scrollbar-width: none;
+}
+
+/* Editorial label — small all-caps with wide tracking */
+.label-editorial {
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.35em;
+  font-weight: 500;
+}
+
+/* Whispered price — elegant, not screaming */
+.price-whisper {
+  font-size: 1.125rem;
+  font-weight: 300;
+  letter-spacing: 0.05em;
 }
 
 /* Product card hover zoom */
@@ -168,15 +185,15 @@ html {
   animation: fadeIn 0.2s ease-out forwards;
 }
 
-/* Product card lift on hover */
+/* Product card lift on hover — subtle, editorial */
 .product-card-lift {
-  transition: transform 0.35s cubic-bezier(0.25, 0.1, 0.25, 1),
-              box-shadow 0.35s cubic-bezier(0.25, 0.1, 0.25, 1);
+  transition: transform 0.4s cubic-bezier(0.25, 0.1, 0.25, 1),
+              box-shadow 0.4s cubic-bezier(0.25, 0.1, 0.25, 1);
 }
 .product-card-lift:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 12px 28px -8px rgba(0, 0, 0, 0.12),
-              0 4px 10px -4px rgba(0, 0, 0, 0.06);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px -6px rgba(0, 0, 0, 0.08),
+              0 2px 6px -2px rgba(0, 0, 0, 0.04);
 }
 
 /* Tactile button press */
@@ -184,11 +201,11 @@ html {
   transition: transform 0.15s ease, box-shadow 0.2s ease, background-color 0.2s ease;
 }
 .btn-tactile:hover {
-  box-shadow: 0 4px 14px -2px rgba(224, 122, 95, 0.35);
+  box-shadow: 0 4px 14px -2px rgba(0, 0, 0, 0.2);
 }
 .btn-tactile:active {
   transform: scale(0.97);
-  box-shadow: 0 2px 6px -2px rgba(224, 122, 95, 0.3);
+  box-shadow: 0 2px 6px -2px rgba(0, 0, 0, 0.15);
 }
 
 /* Focus ring for accessibility */

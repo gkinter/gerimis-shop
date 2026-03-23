@@ -20,7 +20,7 @@ export function Marquee({
       : "bg-transparent";
 
   return (
-    <div className={`overflow-hidden py-3 ${bgClass}`} aria-hidden="true">
+    <div className={`overflow-hidden py-3.5 ${bgClass}`} aria-hidden="true">
       <div className="animate-marquee flex whitespace-nowrap w-max">
         {[...items, ...items].map((_, idx) => (
           <Link

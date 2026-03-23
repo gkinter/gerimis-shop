@@ -38,17 +38,17 @@ export function CollectionCard({
           />
         )}
       </div>
-      <div className="absolute inset-0 bg-gradient-to-t from-black/55 via-transparent to-transparent group-hover:from-black/65 transition-all duration-300" />
-      <div className="absolute bottom-0 left-0 right-0 p-5 md:p-8 transform group-hover:translate-y-[-4px] transition-transform duration-300">
+      <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent group-hover:from-black/70 transition-all duration-300" />
+      <div className="absolute bottom-0 left-0 right-0 p-6 md:p-10 transform group-hover:translate-y-[-2px] transition-transform duration-300">
         <h3 className="font-[family-name:var(--font-display)] text-xl md:text-2xl text-white font-light">
           {collection.name}
         </h3>
         {collection.description && (
-          <p className="text-xs text-white/70 mt-1 max-w-xs">
+          <p className="text-xs text-white/70 mt-2 max-w-xs leading-relaxed">
             {collection.description}
           </p>
         )}
-        <span className="inline-block mt-3 text-[10px] uppercase tracking-widest text-white/80 border-b border-white/40 pb-0.5 group-hover:border-white transition-colors">
+        <span className="inline-block mt-4 text-[10px] uppercase tracking-widest text-white border-b border-white/60 pb-1 group-hover:border-white transition-colors">
           Explore
         </span>
       </div>

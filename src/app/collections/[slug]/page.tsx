@@ -46,7 +46,7 @@ export default async function CollectionPage({
 
       {/* Collection header */}
       {collection ? (
-        <div className="relative h-[40vh] md:h-[50vh] overflow-hidden bg-[var(--color-sand)]">
+        <div className="relative h-[45vh] md:h-[55vh] overflow-hidden bg-[var(--color-sand)]">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
             src={collection.image}
@@ -54,39 +54,41 @@ export default async function CollectionPage({
             className="w-full h-full object-cover"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-black/55 via-black/15 to-transparent" />
-          <div className="absolute inset-0 flex items-end justify-start p-6 md:p-16">
+          <div className="absolute inset-0 flex items-end justify-start p-8 md:p-16 lg:p-20">
             <div>
               <h1 className="font-[family-name:var(--font-display)] text-3xl md:text-5xl text-white font-light">
                 {collection.name}
               </h1>
               {collection.description && (
-                <p className="text-sm text-white/70 mt-2 max-w-md">
+                <p className="text-sm text-white/70 mt-3 max-w-md leading-relaxed">
                   {collection.description}
                 </p>
               )}
-              <p className="text-xs text-white/50 mt-3">
+              <p className="text-xs text-white/50 mt-4">
                 {displayProducts.length} {displayProducts.length === 1 ? "item" : "items"}
               </p>
             </div>
           </div>
         </div>
       ) : (
-        <div className="text-center py-16 md:py-20 bg-[var(--color-sand)]">
-          <p className="text-[10px] uppercase tracking-[0.3em] text-[var(--color-accent)] mb-2">
+        <div className="text-center py-20 md:py-28 bg-[var(--color-sand)]">
+          <p className="text-[10px] uppercase tracking-[0.3em] text-[var(--color-accent)] mb-3">
             Gerimis
           </p>
           <h1 className="font-[family-name:var(--font-display)] text-3xl md:text-4xl font-light">
             {title}
           </h1>
-          <p className="text-sm text-gray-500 mt-2">
+          <p className="text-sm text-gray-500 mt-3">
             {displayProducts.length} {displayProducts.length === 1 ? "item" : "items"}
           </p>
         </div>
       )}
 
       {/* Product grid */}
-      <section className="px-4 md:px-8 py-12 md:py-16">
-        <ProductGrid products={displayProducts} columns={4} />
+      <section className="px-6 md:px-12 lg:px-16 py-16 md:py-24">
+        <div className="max-w-7xl mx-auto">
+          <ProductGrid products={displayProducts} columns={4} />
+        </div>
       </section>
     </>
   );

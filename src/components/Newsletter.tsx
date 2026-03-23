@@ -8,12 +8,20 @@ export function Newsletter() {
   const [submitted, setSubmitted] = useState(false);
 
   useEffect(() => {
-    const timer = setTimeout(() => {
-      if (!sessionStorage.getItem("newsletter-dismissed")) {
+    const handleScroll = () => {
+      const scrolled = window.scrollY / (document.body.scrollHeight - window.innerHeight);
+      if (scrolled > 0.5 && !sessionStorage.getItem("newsletter-dismissed")) {
         setOpen(true);
+        window.removeEventListener("scroll", handleScroll);
       }
-    }, 8000);
-    return () => clearTimeout(timer);
+    };
+    const timer = setTimeout(() => {
+      window.addEventListener("scroll", handleScroll);
+    }, 15000);
+    return () => {
+      clearTimeout(timer);
+      window.removeEventListener("scroll", handleScroll);
+    };
   }, []);
 
   // Lock body scroll when open
@@ -62,7 +70,7 @@ export function Newsletter() {
       />
       {/* Modal: bottom-sheet on mobile, centered on desktop */}
       <div
-        className="fixed bottom-0 left-0 right-0 md:bottom-auto md:top-1/2 md:left-1/2 bg-[#FEFCF8] z-[90] p-8 md:p-12 md:max-w-md w-full shadow-2xl rounded-t-2xl md:rounded-2xl animate-slide-up md:animate-scale-in"
+        className="fixed bottom-0 left-0 right-0 md:bottom-auto md:top-1/2 md:left-1/2 bg-[#FEFCF8] z-[90] p-10 md:p-16 md:max-w-md w-full shadow-2xl rounded-t-2xl md:rounded-2xl animate-slide-up md:animate-scale-in"
         role="dialog"
         aria-label="Newsletter signup"
       >
@@ -89,13 +97,13 @@ export function Newsletter() {
           </div>
         ) : (
           <>
-            <p className="text-[10px] uppercase tracking-[0.3em] text-[var(--color-accent)] mb-2">
+            <p className="label-editorial text-[var(--color-accent)] mb-3">
               Join the Drizzle Crew
             </p>
-            <h3 className="font-[family-name:var(--font-display)] text-2xl font-light mb-2">
+            <h3 className="font-[family-name:var(--font-display)] text-2xl md:text-3xl font-light mb-3">
               10% off your first poncho
             </h3>
-            <p className="text-sm text-gray-500 mb-6">
+            <p className="text-sm text-gray-500 mb-8">
               Plus early access to new drops, behind-the-scenes from Bali, and
               rainy day playlists.
             </p>
@@ -106,12 +114,12 @@ export function Newsletter() {
                 onChange={(e) => setEmail(e.target.value)}
                 placeholder="your@email.com"
                 required
-                className="w-full border-b-2 border-black/20 focus:border-[var(--color-accent)] pb-2 text-sm outline-none placeholder:text-gray-300 mb-6 bg-transparent transition-colors"
+                className="w-full border-b-2 border-black/20 focus:border-[var(--color-accent)] pb-3 text-sm outline-none placeholder:text-gray-300 mb-8 bg-transparent transition-colors"
               />
               <input type="text" className="honey-field" tabIndex={-1} aria-hidden="true" />
               <button
                 type="submit"
-                className="w-full py-4 bg-[var(--color-accent)] text-white text-xs uppercase tracking-[0.2em] hover:bg-[var(--color-accent-hover)] transition-colors btn-tactile focus-ring rounded-sm"
+                className="w-full py-4 bg-black text-white text-xs uppercase tracking-[0.2em] hover:bg-gray-900 transition-colors btn-tactile focus-ring rounded-sm"
               >
                 Join & Save 10%
               </button>

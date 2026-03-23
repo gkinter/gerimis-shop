@@ -30,26 +30,26 @@ export function ProductCard({ product }: ProductCardProps) {
             onError={() => setImgError(true)}
           />
         )}
-        {/* Sale badge */}
+        {/* Sale indicator — subtle text, no colored badge */}
         {product.originalPrice && (
-          <span className="absolute top-3 left-3 bg-[var(--color-coral)] text-white text-[10px] uppercase tracking-wider px-2.5 py-1 rounded-sm font-medium">
+          <span className="absolute top-3 left-3 text-[10px] uppercase tracking-widest text-white/90 font-light">
             Sale
           </span>
         )}
         {/* Quick view hint on hover */}
         <div className="absolute inset-0 bg-black/0 group-hover:bg-black/5 transition-colors duration-300" />
       </div>
-      <div className="mt-4 space-y-1">
-        <p className="text-[10px] uppercase tracking-widest text-[var(--color-accent)]">
+      <div className="mt-5 space-y-1.5">
+        <p className="label-editorial text-[var(--color-accent)]">
           {product.category}
         </p>
-        <h3 className="text-sm font-medium group-hover:text-[var(--color-accent)] transition-colors duration-200">
+        <h3 className="text-sm md:text-base font-medium group-hover:text-[var(--color-accent)] transition-colors duration-200 leading-snug">
           {product.name}
         </h3>
-        <div className="flex items-center gap-2">
-          <span className="text-sm font-medium">{formatPrice(product.price)}</span>
+        <div className="flex items-center gap-2 pt-0.5">
+          <span className="text-sm font-light">{formatPrice(product.price)}</span>
           {product.originalPrice && (
-            <span className="text-sm text-gray-400 line-through">
+            <span className="text-sm text-gray-400 line-through font-light">
               {formatPrice(product.originalPrice)}
             </span>
           )}

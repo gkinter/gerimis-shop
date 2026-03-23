@@ -17,7 +17,7 @@ export function Header() {
         </p>
       </div>
 
-      <nav className="flex items-center justify-between px-4 md:px-8 py-4 border-b border-black/5">
+      <nav className="flex items-center justify-between px-6 md:px-12 lg:px-16 py-5 border-b border-black/5">
         {/* Mobile menu button */}
         <button
           onClick={() => setMenuOpen(!menuOpen)}
@@ -44,7 +44,7 @@ export function Header() {
           <img
             src="/gerimis-logo-2.png"
             alt="Gerimis"
-            className="h-10 md:h-12 w-auto inline-block"
+            className="h-8 md:h-10 w-auto inline-block"
             onError={(e) => {
               const target = e.currentTarget;
               target.style.display = "none";

@@ -16,7 +16,7 @@ export function ProductGallery({ images, name }: ProductGalleryProps) {
   };
 
   return (
-    <div className="flex flex-col-reverse md:flex-row gap-3 md:gap-4">
+    <div className="flex flex-col-reverse md:flex-row gap-3 md:gap-4 md:px-0">
       {/* Thumbnails: horizontal scroll on mobile, vertical on desktop */}
       {images.length > 1 && (
         <div className="flex md:flex-col gap-2 overflow-x-auto md:overflow-x-visible no-scrollbar md:w-16 flex-shrink-0">
@@ -47,7 +47,7 @@ export function ProductGallery({ images, name }: ProductGalleryProps) {
       )}
 
       {/* Main image */}
-      <div className="flex-1 aspect-[3/4] overflow-hidden bg-[var(--color-sand)] rounded-sm">
+      <div className="flex-1 aspect-square md:aspect-[3/4] overflow-hidden bg-[var(--color-sand)] md:rounded-sm">
         {imgErrors.has(selected) ? (
           <div className="w-full h-full flex items-center justify-center">
             <span className="font-[family-name:var(--font-display)] text-2xl text-[var(--color-accent)]/30">
