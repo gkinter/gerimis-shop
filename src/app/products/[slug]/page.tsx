@@ -41,7 +41,7 @@ export default async function ProductPage({
     <>
       {/* Breadcrumb */}
       <nav className="px-6 md:px-12 lg:px-16 py-5 text-xs text-gray-400" aria-label="Breadcrumb">
-        <div className="max-w-7xl mx-auto">
+        <div className="max-w-[1200px] mx-auto">
           <Link href="/" className="hover:text-gray-600 focus-ring">Home</Link>
           <span className="mx-2">/</span>
           <Link href="/collections/all" className="hover:text-gray-600 focus-ring">Shop</Link>
@@ -51,7 +51,7 @@ export default async function ProductPage({
       </nav>
 
       <div className="px-0 md:px-12 lg:px-16 pb-24 md:pb-36">
-        <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-0 lg:gap-24">
+        <div className="max-w-[1200px] mx-auto grid grid-cols-1 lg:grid-cols-2 gap-0 lg:gap-24">
           {/* Image gallery — full-bleed on mobile */}
           <div className="md:px-0">
             <ProductGallery images={product.images} name={product.name} />
@@ -149,8 +149,8 @@ export default async function ProductPage({
 
       {/* Lifestyle image */}
       {product.lifestyleImage && (
-        <section className="px-0 md:px-12 lg:px-16 py-8">
-          <div className="max-w-7xl mx-auto aspect-[21/9] overflow-hidden bg-[var(--color-sand)] md:rounded-lg">
+        <section className="py-8">
+          <div className="aspect-[21/9] overflow-hidden bg-[var(--color-sand)]">
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
               src={product.lifestyleImage}
@@ -164,7 +164,7 @@ export default async function ProductPage({
       {/* Related products */}
       {related.length > 0 && (
         <section className="px-6 md:px-12 lg:px-16 py-24 md:py-36 border-t border-black/5">
-          <div className="max-w-7xl mx-auto">
+          <div className="max-w-[1200px] mx-auto">
             <div className="text-center mb-16 md:mb-20">
               <p className="label-editorial text-[var(--color-accent)] mb-2">
                 You May Also Like

@@ -38,9 +38,12 @@ export function CollectionCard({
           />
         )}
       </div>
-      <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent group-hover:from-black/70 transition-all duration-300" />
+      <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent group-hover:from-black/70 transition-all duration-300" />
       <div className="absolute bottom-0 left-0 right-0 p-6 md:p-10 transform group-hover:translate-y-[-2px] transition-transform duration-300">
-        <h3 className="font-[family-name:var(--font-display)] text-xl md:text-2xl text-white font-light">
+        <h3
+          className="font-[family-name:var(--font-display)] text-xl md:text-2xl text-white font-light"
+          style={{ textShadow: '0 1px 3px rgba(0,0,0,0.3)' }}
+        >
           {collection.name}
         </h3>
         {collection.description && (

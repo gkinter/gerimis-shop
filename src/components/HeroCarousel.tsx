@@ -43,7 +43,7 @@ export function HeroCarousel() {
           />
         </div>
       ))}
-      <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/15 to-black/5" />
+      <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-black/5" />
 
       {/* Content */}
       <div className="relative h-full flex flex-col items-center justify-end pb-24 md:pb-36 px-6 text-center">
@@ -62,7 +62,7 @@ export function HeroCarousel() {
         </h1>
         <Link
           href={`/collections/${slide.slug}`}
-          className="inline-block border-2 border-white text-white text-xs uppercase tracking-[0.25em] px-12 py-5 hover:bg-white hover:text-[var(--color-volcanic)] transition-all duration-300 focus-ring backdrop-blur-sm bg-white/5"
+          className="inline-block bg-white/90 text-[#1a2e25] text-xs uppercase tracking-[0.25em] px-12 py-5 hover:bg-white border-0 transition-all duration-300 focus-ring"
         >
           Shop Now
         </Link>

@@ -86,7 +86,7 @@ export default async function CollectionPage({
 
       {/* Product grid */}
       <section className="px-6 md:px-12 lg:px-16 py-16 md:py-24">
-        <div className="max-w-7xl mx-auto">
+        <div className="max-w-[1200px] mx-auto">
           <ProductGrid products={displayProducts} columns={4} />
         </div>
       </section>

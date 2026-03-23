@@ -12,12 +12,14 @@ export function Header() {
     <header className="sticky top-0 z-50 bg-[#FEFCF8]/95 backdrop-blur-md">
       {/* Top bar */}
       <div className="bg-[var(--color-volcanic)] text-white text-center py-2 px-4">
-        <p className="text-[10px] md:text-xs tracking-widest uppercase">
-          Free shipping on orders over $150 &middot; Made from recycled materials
-        </p>
+        <div className="max-w-[1200px] mx-auto">
+          <p className="text-[10px] md:text-xs tracking-widest uppercase">
+            Free shipping on orders over $150 &middot; Made from recycled materials
+          </p>
+        </div>
       </div>
 
-      <nav className="flex items-center justify-between px-6 md:px-12 lg:px-16 py-5 border-b border-black/5">
+      <nav className="max-w-[1200px] mx-auto flex items-center justify-between px-6 md:px-12 lg:px-16 py-5 border-b border-black/5">
         {/* Mobile menu button */}
         <button
           onClick={() => setMenuOpen(!menuOpen)}

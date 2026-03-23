@@ -24,7 +24,7 @@ export default function OurStoryPage() {
       </section>
 
       {/* Content */}
-      <div className="max-w-4xl mx-auto px-6 md:px-8 py-24 md:py-36">
+      <div className="max-w-[900px] mx-auto px-6 md:px-12 py-24 md:py-36">
         {/* The Beginning */}
         <section className="grid grid-cols-1 md:grid-cols-[200px_1fr] gap-8 md:gap-16 pt-24 md:pt-32">
           <div>
