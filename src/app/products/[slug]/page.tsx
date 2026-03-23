@@ -152,9 +152,6 @@ export default async function ProductPage({
               src={product.lifestyleImage}
               alt={`${product.name} in action`}
               className="w-full h-full object-cover"
-              onError={(e: React.SyntheticEvent<HTMLImageElement>) => {
-                e.currentTarget.style.display = "none";
-              }}
             />
           </div>
         </section>

@@ -52,9 +52,6 @@ export default async function CollectionPage({
             src={collection.image}
             alt={collection.name}
             className="w-full h-full object-cover"
-            onError={(e: React.SyntheticEvent<HTMLImageElement>) => {
-              e.currentTarget.style.display = "none";
-            }}
           />
           <div className="absolute inset-0 bg-gradient-to-t from-black/55 via-black/15 to-transparent" />
           <div className="absolute inset-0 flex items-end justify-start p-6 md:p-16">

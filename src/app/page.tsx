@@ -200,19 +200,14 @@ export default function HomePage() {
             { src: "/lifestyle/lifestyle-surfer.png", alt: "Surfer in rain", emoji: "\u{1F3C4}" },
             { src: "/lifestyle/lifestyle-cafe.png", alt: "Bali cafe in rain", emoji: "\u2615" },
           ].map((item) => (
-            <div key={item.alt} className="aspect-square overflow-hidden rounded-sm bg-[var(--color-sand)] relative group">
+            <div key={item.alt} className="aspect-square overflow-hidden rounded-sm bg-[var(--color-sand)] relative group flex items-center justify-center">
+              {/* Emoji placeholder (visible when image is missing) */}
+              <span className="text-4xl opacity-15 absolute">{item.emoji}</span>
               <img
                 src={item.src}
                 alt={item.alt}
-                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                onError={(e: React.SyntheticEvent<HTMLImageElement>) => {
-                  e.currentTarget.style.display = "none";
-                }}
+                className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
               />
-              {/* Fallback shown when image fails (sand bg already visible) */}
-              <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-                <span className="text-4xl opacity-20">{item.emoji}</span>
-              </div>
             </div>
           ))}
         </div>
